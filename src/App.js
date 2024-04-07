@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import Input from './compoments/Input';
+import DisplayDetails from './compoments/DisplayDetails';
 
 function App() {
+  const [informations,setInformations]=useState('');
+  const [editID,setEditID]=useState('');
+  const userDetails=(information)=> {
+   console.log("The information of user is" ,information)
+   
+  
+    
+    setInformations([...informations,information])
+   
+  }
+  const deleteInfo=(id)=> {
+   const updatedInfo=informations.filter((info)=> info.id!==id);
+   
+    setInformations(updatedInfo); 
+      
+     
+  }
+  const editInfo=(id)=> {
+   ;
+ 
+     setEditID(id);
+     console.log("Information edited", id)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+   <Input  userDetails={userDetails} editID={editID} informations={informations} setEditID={setEditID}> </Input>
+   <DisplayDetails informations={informations} deleteInfo={deleteInfo} editInfo={editInfo}/>
+   
     </div>
   );
 }
