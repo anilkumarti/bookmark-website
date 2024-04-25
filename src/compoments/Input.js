@@ -1,4 +1,5 @@
 import React ,{ useState,useEffect} from 'react'
+import Modal from './Modal';
 
 const Input = (props) => {
   const [tittle,setTittle]=useState("");
@@ -37,6 +38,7 @@ const Input = (props) => {
   }
   
   return (
+    <Modal onHide={props.onHide}> 
     <form onSubmit={submitDetails}>
       <div>
         <label htmlFor=''>Website Tittle</label>
@@ -50,7 +52,7 @@ const Input = (props) => {
        <div> 
         <input type='submit'/>
        </div>
-    </form>
+    </form> </Modal>
   )
 }
 
